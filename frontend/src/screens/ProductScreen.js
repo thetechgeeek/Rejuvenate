@@ -18,9 +18,11 @@ import { productActions_details } from '../actions/productActions';
 import Loader from '../components/loader';
 import Message from '../components/message';
 
-// match prop received from /product/:id route and rendered in ProductScreen
+// <Route/> renders ProductScreen component by passing
+// props (match, location, history)
+// here, we're extracting history & match for use
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
