@@ -24,7 +24,7 @@ const CartScreen = ({ match, location, history }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (productId) {
-      dispatch(cartAction_add(productId, qty));
+      dispatch(cartActions_add(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
