@@ -18,3 +18,11 @@ export const cartActions_add = (id, qty) => async (dispatch, getState) => {
   //stringify because only strings saved in local storage
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 };
+
+export const cartActions_remove = (id) => async (dispatch, getState) => {
+  dispatch({
+    type: 'CART_REMOVE_ITEM',
+    payload: id,
+  });
+  localStorage;
+};
