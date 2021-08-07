@@ -2,6 +2,7 @@
 //fetches data from db (async process) and responds with json
 
 import asyncHandler from 'express-async-handler';
+import generateToken from '../utils/generateToken.js';
 import User from '../models/userModel.js';
 
 //@desc    Auth user & get token
@@ -19,7 +20,10 @@ const authUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: null,
+      //generating token for user auth and giving access to
+      //protected routes
+      //token generated containing userID embedded
+      token: generateToken(user._id),
     });
   } else {
     res.status(401);
