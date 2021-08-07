@@ -47,8 +47,8 @@ const ProductScreen = ({ history, match }) => {
         <Message variant='danger' />
       ) : (
         <Row>
-          <Col md={6}>
-            <Image src={`.${product.image}`} width='100%' fluid />
+          <Col md={6} className='text-center'>
+            <Image src={`.${product.image}`} width='400px' fluid />
           </Col>
           <Col md={3}>
             <ListGroup variant='flush'>
