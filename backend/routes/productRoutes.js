@@ -1,10 +1,10 @@
 //using router.js which provides an API for handling routes
 
-import express, { Router } from 'express';
+import express from 'express';
 import {
   getProducts,
   getProductsById,
-} from '../controllers/productControllers';
+} from '../controllers/productControllers.js';
 const router = express.Router();
 
 router.route('/').get(getProducts);
