@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
   return (
@@ -20,8 +21,7 @@ function App() {
         <Container>
           {/* include Homescreen component loaded*/}
           <Route path='/' component={HomeScreen} exact />
-          {/* passing id as route parameter. react lib passes in a prop
-          called 'match' to this router which contains 'params' */}
+          <Route path='/login' component={LoginScreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/cart/:id?' component={CartScreen} />
         </Container>
