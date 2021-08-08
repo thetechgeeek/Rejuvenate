@@ -1,10 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // react Router Bootstrap used for wrapping react boot element in
 // <linkcontainer> to make it behave like react Router <link>
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { userActions_logout } from '../actions/userActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(userActions_logout());
+  };
   return (
     <header>
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
@@ -15,11 +25,23 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <LinkContainer to='/login'>
-                <Nav.Link>
-                  <i class='fas fa-user fa-lg'></i> Sign In
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id='username'>
+                  <LinkContainer to='/profile'>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <i class='fas fa-user fa-lg'></i> Sign In
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
               <LinkContainer to='/search'>
                 <Nav.Link>
                   <i class='fas fa-search fa-lg'></i> Search
