@@ -15,6 +15,6 @@ router.post('/login', authUser);
 router
   .route('/profile')
   .get(authMiddleware, getUserProfile)
-  .put(protect, updateUserProfile);
+  .put(authMiddleware, updateUserProfile);
 
 export default router;
