@@ -12,6 +12,7 @@ import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import ShippingScreen from './screens/ShippingScreen';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Container>
           {/* include Homescreen component loaded*/}
           <Route path='/' component={HomeScreen} exact />
+          <Route path='/shipping' component={ShippingScreen} />
           <Route path='/login' component={LoginScreen} />
           <Route path='/register' component={RegisterScreen} />
           <Route path='/profile' component={ProfileScreen} />
