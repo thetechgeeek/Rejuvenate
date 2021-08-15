@@ -32,6 +32,12 @@ export const cartReducer = (
         // replacing cartItems with a new one with selectedProduct filtered out
         shippingAddress: action.payload,
       };
+    case 'CART_SAVE_PAYMENT_METHOD':
+      return {
+        ...state,
+        // replacing cartItems with a new one with selectedProduct filtered out
+        paymentMethod: action.payload,
+      };
     default:
       return state;
   }
