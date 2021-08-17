@@ -37,7 +37,7 @@ export const orderActions_createOrder =
   };
 
 export const orderActions_getOrderDetails =
-  (order) => async (dispatch, getState) => {
+  (id) => async (dispatch, getState) => {
     try {
       dispatch({
         type: 'ORDER_DETAILS_REQUEST',
