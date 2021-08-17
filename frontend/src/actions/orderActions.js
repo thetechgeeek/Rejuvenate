@@ -70,3 +70,42 @@ export const orderActions_getOrderDetails =
       });
     }
   };
+export const orderActions_payOrder =
+  (orderId, paymentResult) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: 'ORDER_PAY_REQUEST',
+      });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+      //config for sending data, we want to send
+      //headers with content type/ will also
+      //set authorization for the token
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/orders/${orderId}/pay`,
+        paymentResult,
+        config
+      );
+
+      dispatch({ type: 'ORDER_PAY_SUCCESS', payload: data });
+    } catch (error) {
+      dispatch({
+        type: 'ORDER_PAY_FAIL',
+        payload:
+          //trying to getting the message obj from the custom error msg we
+          //created, if !exists, display the current msg
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
