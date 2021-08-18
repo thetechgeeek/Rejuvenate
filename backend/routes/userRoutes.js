@@ -8,6 +8,8 @@ import {
   updateUserProfile,
   getUsers,
   deleteUser,
+  getUserById,
+  updateUser,
 } from '../controllers/userControllers.js';
 import { admin, authMiddleware } from '../middleware/authMiddleware.js';
 const router = express.Router();
@@ -18,6 +20,10 @@ router
   .route('/profile')
   .get(authMiddleware, getUserProfile)
   .put(authMiddleware, updateUserProfile);
-router.route('/:id').delete(authMiddleware, admin, deleteUser);
+router
+  .route('/:id')
+  .delete(authMiddleware, admin, deleteUser)
+  .get(authMiddleware, admin, getUserById)
+  .put(authMiddleware, admin, updateUser);
 
 export default router;
