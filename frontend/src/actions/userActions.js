@@ -155,3 +155,37 @@ export const userActions_updateUserProfile =
       });
     }
   };
+
+export const userActions_listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: 'USER_LIST_REQUEST',
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    //config for sending data, we want to send
+    //headers with content type/ will also
+    //set authorization for the token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/users`, config);
+
+    dispatch({ type: 'USER_LIST_SUCCESS', payload: data });
+  } catch (error) {
+    dispatch({
+      type: 'USER_LIST_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if !exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
