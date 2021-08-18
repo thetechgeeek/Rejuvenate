@@ -37,7 +37,7 @@ export const userActions_login = (email, password) => async (dispatch) => {
   }
 };
 
-export const userActions_logout = () => (dispatch) => {
+export const userActions_logout = () => async (dispatch) => {
   localStorage.removeItem('userInfo');
   dispatch({ type: 'USER_LOGOUT' });
   dispatch({ type: 'USER_DETAILS_RESET' });
@@ -181,6 +181,38 @@ export const userActions_listUsers = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: 'USER_LIST_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if !exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const userActions_deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: 'USER_DELETE_REQUEST' });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    //config for sending data, we want to send
+    //headers with content type/ will also
+    //set authorization for the token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.delete(`/api/users/${id}`, config);
+
+    dispatch({ type: 'USER_DELETE_SUCCESS' });
+  } catch (error) {
+    dispatch({
+      type: 'USER_DELETE_FAIL',
       payload:
         //trying to getting the message obj from the custom error msg we
         //created, if !exists, display the current msg
