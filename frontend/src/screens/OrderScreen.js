@@ -131,10 +131,11 @@ const OrderScreen = ({ match, history }) => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`/${item.image}`}
                             alt={item.name}
                             fluid
                             rounded
+                            style={{ width: '50px' }}
                           />
                         </Col>
                         <Col>

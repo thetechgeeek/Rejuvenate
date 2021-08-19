@@ -54,7 +54,13 @@ const CartScreen = ({ match, location, history }) => {
               <ListGroupItem key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                    <Image
+                      src={`/${item.image}`}
+                      alt={item.name}
+                      fluid
+                      rounded
+                      style={{ width: '50px' }}
+                    />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
