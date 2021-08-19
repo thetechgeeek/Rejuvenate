@@ -222,3 +222,37 @@ export const userActions_deleteUser = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const userActions_updateUser = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: 'USER_UPDATE_REQUEST' });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    //config for sending data, we want to send
+    //headers with content type/ will also
+    //set authorization for the token
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.put(`/api/users/${user._id}`, user, config);
+
+    dispatch({ type: 'USER_UPDATE_SUCCESS' });
+    dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data });
+  } catch (error) {
+    dispatch({
+      type: 'USER_UPDATE_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if !exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
