@@ -115,3 +115,39 @@ export const productActions_create = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const productActions_update =
+  (product) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: 'PRODUCT_UPDATE_REQUEST' });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/products/${product._id}`,
+        product,
+        config
+      );
+
+      dispatch({ type: 'PRODUCT_UPDATE_SUCCESS', payload: data });
+    } catch (error) {
+      dispatch({
+        type: 'PRODUCT_UPDATE_FAIL',
+        payload:
+          //trying to getting the message obj from the custom error msg we
+          //created, if not exists, display the current msg
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
