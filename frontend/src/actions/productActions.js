@@ -85,3 +85,33 @@ export const productActions_delete = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const productActions_create = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: 'PRODUCT_CREATE_REQUEST' });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.post(`/api/products/`, {}, config);
+
+    dispatch({ type: 'PRODUCT_CREATE_SUCCESS', payload: data });
+  } catch (error) {
+    dispatch({
+      type: 'PRODUCT_CREATE_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if not exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
