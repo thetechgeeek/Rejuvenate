@@ -8,7 +8,7 @@ export const productActions_list = () => async (dispatch) => {
     dispatch({
       type: 'PRODUCT_LIST_REQUEST',
     });
-    const { data } = await axios.get('./api/products');
+    const { data } = await axios.get('/api/products');
 
     dispatch({
       type: 'PRODUCT_LIST_SUCCESS',
@@ -41,6 +41,41 @@ export const productActions_details = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: 'PRODUCT_DETAILS_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if not exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+/*
+-try (to dispatch this action) or catch (error)
+-grabbing user's info from the state
+-grabbing the 'token' from user's info and sending it as headers
+ in the GET request
+-GET request returns a promise which is grabbed in 'data' const
+-finally dispatching the action containing the data
+*/
+
+export const productActions_delete = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: 'PRODUCT_DELETE_REQUEST' });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
+
+    await axios.delete(`/api/products/${id}`, config);
+
+    dispatch({ type: 'PRODUCT_DELETE_SUCCESS' });
+  } catch (error) {
+    dispatch({
+      type: 'PRODUCT_DELETE_FAIL',
       payload:
         //trying to getting the message obj from the custom error msg we
         //created, if not exists, display the current msg
