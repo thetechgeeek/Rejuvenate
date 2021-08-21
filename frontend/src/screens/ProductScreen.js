@@ -48,7 +48,7 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <Row>
           <Col md={6} className='text-center'>
-            <Image src={`.${product.image}`} width='400px' fluid />
+            <Image src={`/${product.image}`} width='400px' fluid />
           </Col>
           <Col md={3}>
             <ListGroup variant='flush'>

@@ -8,7 +8,6 @@ import {
   ListGroup,
   Image,
   Card,
-  Button,
   ListGroupItem,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';

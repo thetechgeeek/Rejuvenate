@@ -8,10 +8,7 @@ import {
   userActions_getUserDetails,
   userActions_updateUserProfile,
 } from '../actions/userActions';
-import {
-  orderActions_listMyOrders,
-  orderActions_payOrder,
-} from '../actions/orderActions';
+import { orderActions_listMyOrders } from '../actions/orderActions';
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('');
