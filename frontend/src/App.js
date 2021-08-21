@@ -31,7 +31,6 @@ function App() {
       <main className='py-3'>
         <Container>
           {/* include Homescreen component loaded*/}
-          <Route path='/' component={HomeScreen} exact />
           <Route path='/order/:id' component={OrderScreen} />
           <Route path='/shipping' component={ShippingScreen} />
           <Route path='/placeorder' component={PlaceOrderScreen} />
@@ -48,8 +47,9 @@ function App() {
             component={ProductListScreen}
             exact
           />
-          <Route path='/admin/orderList' component={OrderListScreen} exact />
           <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
+          <Route path='/admin/orderList' component={OrderListScreen} exact />
+          <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>
 
