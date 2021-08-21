@@ -142,3 +142,37 @@ export const orderActions_listMyOrders = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const orderActions_listOrders = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: 'ORDER_LIST_REQUEST',
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    //config for sending data, we want to send
+    //headers with content type/ will also
+    //set authorization for the token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get(`/api/orders`, config);
+
+    dispatch({ type: 'ORDER_LIST_SUCCESS', payload: data });
+  } catch (error) {
+    dispatch({
+      type: 'ORDER_LIST_FAIL',
+      payload:
+        //trying to getting the message obj from the custom error msg we
+        //created, if !exists, display the current msg
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

@@ -5,12 +5,16 @@ import {
   addOrderItems,
   getMyOrders,
   getOrderById,
+  getOrders,
   updateOrderToPaid,
 } from '../controllers/orderControllers.js';
-import { authMiddleware } from '../middleware/authMiddleware.js';
+import { admin, authMiddleware } from '../middleware/authMiddleware.js';
 const router = express.Router();
 
-router.route('/').post(authMiddleware, addOrderItems);
+router
+  .route('/')
+  .post(authMiddleware, addOrderItems)
+  .get(authMiddleware, admin, getOrders);
 router.route('/myorders').get(authMiddleware, getMyOrders);
 router.route('/:id').get(authMiddleware, getOrderById);
 router.route('/:id/pay').put(authMiddleware, updateOrderToPaid);
