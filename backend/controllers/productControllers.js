@@ -8,6 +8,10 @@ import Product from '../models/productModel.js';
 //@route  GET /api/products
 //@access  Public
 const getProducts = asyncHandler(async (req, res) => {
+  const pageSize = 8;
+  //?pageNumber=1/2/3
+  const page = Number(req.query.pageNumber) || 1;
+
   //getting '?--' by using req.query
   const keyword = req.query.keyword
     ? {
@@ -18,8 +22,12 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const products = await Product.find({ ...keyword });
-  res.json(products);
+  const count = await Product.countDocuments({ ...keyword });
+
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 //@desc  Fetch single Product
@@ -54,15 +62,16 @@ const deleteProduct = asyncHandler(async (req, res) => {
 //@access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'sample name',
+    name: 'Enter brand here...',
     price: 0,
-    brand: 'sample brand',
+    brand: 'Enter brand here...',
     user: req.user._id,
     image: '/images/sample.jpg',
-    category: 'sample category',
+    category: 'Enter category here...',
     countInStock: 0,
     numReviews: 0,
-    description: 'sample description',
+    description: 'Enter description here...',
+    concern: 'Enter concern here...',
   });
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);

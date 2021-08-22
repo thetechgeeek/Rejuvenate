@@ -106,7 +106,7 @@ const ProductEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <FormGroup controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Name</Form.Label>
               <Form.Control
                 type='name'
                 placeholder='Enter name'
@@ -118,7 +118,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='price'>
-              <Form.Label>Price</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Price</Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Enter price'
@@ -130,7 +130,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='image'>
-              <Form.Label>Image</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Image</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter image url'
@@ -149,7 +149,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='brand'>
-              <Form.Label>Brand</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Brand</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter brand'
@@ -161,7 +161,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='category'>
-              <Form.Label>Category</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Category</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter category'
@@ -173,7 +173,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='countInStock'>
-              <Form.Label>countInStock</Form.Label>
+              <Form.Label className='mt-2 mb-1'>countInStock</Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Enter countInStock'
@@ -185,7 +185,7 @@ const ProductEditScreen = ({ match, history }) => {
             </FormGroup>
 
             <FormGroup controlId='description'>
-              <Form.Label>Description</Form.Label>
+              <Form.Label className='mt-2 mb-1'>Description</Form.Label>
               <Form.Control
                 as='textarea'
                 placeholder='Enter description'
@@ -196,7 +196,7 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </FormGroup>
 
-            <Button type='submit' variant='primary'>
+            <Button className='mt-3' type='submit' variant='primary'>
               Update
             </Button>
           </Form>

@@ -12,7 +12,7 @@ import Rating from './Rating';
 const Product = ({ product }) => {
   return (
     //card for a single product
-    <Card className='my-3 shadow bg-white'>
+    <Card className='my-3 shadow-sm bg-white rounded'>
       {/* image (<Link> render actual <a> bts)*/}
       <Link to={`/product/${product._id}`}>
         <Card.Img src={`/${product.image}`} variant='top' />
@@ -20,8 +20,8 @@ const Product = ({ product }) => {
       {/* body */}
       <Card.Body>
         {/* title */}
-        <Link to={`/product/${product._id}`} className='ttle'>
-          <Card.Title>
+        <Link to={`/product/${product._id}`}>
+          <Card.Title className='ttle'>
             <strong>{product.name}</strong>
           </Card.Title>
         </Link>
@@ -33,9 +33,11 @@ const Product = ({ product }) => {
           />
         </Card.Text>
         {/* skinConcern */}
-        <Card.Text className='h6'>{product.concern}</Card.Text>
+        <Card.Text className='ctg'>{product.category}</Card.Text>
         {/* price */}
-        <Card.Text as='h5'>₹{product.price}</Card.Text>
+        <Card.Text>
+          <span className='mrp'>₹{product.price + 200}</span> ₹{product.price}
+        </Card.Text>
       </Card.Body>
     </Card>
   );

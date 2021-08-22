@@ -81,7 +81,7 @@ const ProductScreen = ({ history, match }) => {
               <ListGroup variant='flush'>
                 <ListGroupItem>
                   <h2 className='py-2'>{product.name}</h2>
-                  <h6>{product.concern}</h6>
+                  <div className='ctg'>{product.category}</div>
                 </ListGroupItem>
 
                 <ListGroupItem className='my-2'>
@@ -91,7 +91,10 @@ const ProductScreen = ({ history, match }) => {
                   />
                 </ListGroupItem>
 
-                <ListGroupItem>Price: ₹{product.price}</ListGroupItem>
+                <ListGroupItem>
+                  Price: <span className='mrp'>₹{product.price + 200}</span> ₹
+                  {product.price}
+                </ListGroupItem>
 
                 <ListGroupItem className='my-2'>
                   Description: {product.description}

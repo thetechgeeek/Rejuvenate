@@ -9,3 +9,27 @@ h2 {
   font-size: 1.4rem;
   padding: 0.5rem 0;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: grey;
+}
+.ttle {
+  letter-spacing: 0.14rem;
+  font-size: 1.05rem;
+}
+.ctg {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 50;
+  margin-bottom: 0.5rem;
+}
+.mrp {
+  text-decoration: line-through;
+}
+.srch {
+  position: relative;
+  z-index: 10;
+  background-color: red;
+}
