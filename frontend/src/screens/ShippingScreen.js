@@ -29,7 +29,7 @@ const ShippingScreen = ({ history }) => {
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
         <FormGroup controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label className='mt-2 mb-1'>Address</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter address'
@@ -41,7 +41,7 @@ const ShippingScreen = ({ history }) => {
           ></Form.Control>
         </FormGroup>
         <FormGroup controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label className='mt-2 mb-1'>City</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter city'
@@ -53,7 +53,7 @@ const ShippingScreen = ({ history }) => {
           ></Form.Control>
         </FormGroup>
         <FormGroup controlId='postalCode'>
-          <Form.Label>PostalCode</Form.Label>
+          <Form.Label className='mt-2 mb-1'>PostalCode</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter postalCode'
@@ -65,7 +65,7 @@ const ShippingScreen = ({ history }) => {
           ></Form.Control>
         </FormGroup>
         <FormGroup controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label className='mt-2 mb-1'>Country</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter country'
@@ -76,7 +76,7 @@ const ShippingScreen = ({ history }) => {
             }}
           ></Form.Control>
         </FormGroup>
-        <Button type='submit' variant='primary'>
+        <Button className='mt-3' type='submit' variant='primary'>
           Continue
         </Button>
       </Form>

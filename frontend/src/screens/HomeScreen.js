@@ -33,7 +33,7 @@ const HomeScreen = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Row>
+        <Row className='justify-content-center'>
           {/*loop through all products and render Product component for each product, while
                     passing array element as a prop*/}
           {products.map((currProduct) => (

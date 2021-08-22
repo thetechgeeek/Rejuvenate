@@ -139,9 +139,9 @@ const PlaceOrderScreen = ({ history }) => {
                   <Col>₹{cart.totalPrice}</Col>
                 </Row>
               </ListGroupItem>
-              <ListGroupItem>
-                {error && <Message variant='danger'>{error}</Message>}
-              </ListGroupItem>
+
+              {error && <Message variant='danger'>{error}</Message>}
+
               <ListGroupItem>
                 <Button
                   type='button'
