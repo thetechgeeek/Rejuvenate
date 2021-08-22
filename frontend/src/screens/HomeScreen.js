@@ -9,7 +9,9 @@ import Product from '../components/Product';
 //list of all products
 //state levels- component(menu,forms) and global(products, users)
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword;
+
   const dispatch = useDispatch();
 
   //extracting 'productList' part of state, defined in store
@@ -19,8 +21,8 @@ const HomeScreen = () => {
 
   //dispatching 'list products' action using useEffect
   useEffect(() => {
-    dispatch(productActions_list());
-  }, [dispatch]);
+    dispatch(productActions_list(keyword));
+  }, [dispatch, match, keyword]);
 
   return (
     <>

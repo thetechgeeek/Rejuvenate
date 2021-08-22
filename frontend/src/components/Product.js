@@ -15,7 +15,7 @@ const Product = ({ product }) => {
     <Card className='my-3 shadow bg-white'>
       {/* image (<Link> render actual <a> bts)*/}
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img src={`/${product.image}`} variant='top' />
       </Link>
       {/* body */}
       <Card.Body>

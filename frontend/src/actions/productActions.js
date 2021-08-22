@@ -3,29 +3,31 @@
 import axios from 'axios';
 
 //using thunk for fn inside of a fn
-export const productActions_list = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: 'PRODUCT_LIST_REQUEST',
-    });
-    const { data } = await axios.get('/api/products');
+export const productActions_list =
+  (keyword = '') =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: 'PRODUCT_LIST_REQUEST',
+      });
+      const { data } = await axios.get(`/api/products?keyword=${keyword}`);
 
-    dispatch({
-      type: 'PRODUCT_LIST_SUCCESS',
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: 'PRODUCT_LIST_FAIL',
-      payload:
-        //trying to getting the message obj from the custom error msg we
-        //created, if !exists, display the current msg
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: 'PRODUCT_LIST_SUCCESS',
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: 'PRODUCT_LIST_FAIL',
+        payload:
+          //trying to getting the message obj from the custom error msg we
+          //created, if !exists, display the current msg
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const productActions_details = (id) => async (dispatch) => {
   try {
