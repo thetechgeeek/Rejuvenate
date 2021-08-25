@@ -27,9 +27,8 @@ function App() {
     <Router>
       {/* include Header component */}
       <Header />
-
-      <main className='py-3'>
-        <Container>
+      <main>
+        <Container fluid>
           {/* include Homescreen component loaded*/}
           <Route path='/order/:id' component={OrderScreen} />
           <Route path='/shipping' component={ShippingScreen} />
