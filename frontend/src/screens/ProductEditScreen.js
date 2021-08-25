@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Button, FormGroup } from 'react-bootstrap';
+import { Container, Form, Button, FormGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
 import Loader from '../components/loader';
@@ -91,7 +91,7 @@ const ProductEditScreen = ({ match, history }) => {
   };
 
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -202,7 +202,7 @@ const ProductEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
-    </>
+    </Container>
   );
 };
 

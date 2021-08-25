@@ -8,6 +8,7 @@ import {
   Card,
   Button,
   ListGroupItem,
+  Container,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
@@ -57,7 +58,7 @@ const PlaceOrderScreen = ({ history }) => {
     );
   };
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -156,7 +157,7 @@ const PlaceOrderScreen = ({ history }) => {
           </Card>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

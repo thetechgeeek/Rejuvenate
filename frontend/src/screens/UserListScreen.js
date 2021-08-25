@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
 import Loader from '../components/loader';
@@ -36,7 +36,7 @@ const UserListScreen = ({ history }) => {
   };
 
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <h1>Users</h1>
       {loading ? (
         <Loader />
@@ -87,7 +87,7 @@ const UserListScreen = ({ history }) => {
           </tbody>
         </Table>
       )}
-    </>
+    </Container>
   );
 };
 

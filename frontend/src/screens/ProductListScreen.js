@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Row, Col, Table, Button } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
 import Loader from '../components/loader';
@@ -69,7 +69,7 @@ const ProductListScreen = ({ match, history }) => {
   };
 
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>
@@ -134,7 +134,7 @@ const ProductListScreen = ({ match, history }) => {
           <Paginate pages={pages} page={page} isAdmin={true}></Paginate>
         </>
       )}
-    </>
+    </Container>
   );
 };
 

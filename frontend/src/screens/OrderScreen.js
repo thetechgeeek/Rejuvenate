@@ -10,6 +10,7 @@ import {
   Image,
   Card,
   ListGroupItem,
+  Container,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
@@ -93,7 +94,7 @@ const OrderScreen = ({ match, history }) => {
   ) : error ? (
     <Message variant='danger'>{error}</Message>
   ) : (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
@@ -238,7 +239,7 @@ const OrderScreen = ({ match, history }) => {
           </Card>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

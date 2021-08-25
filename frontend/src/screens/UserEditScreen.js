@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button, FormGroup } from 'react-bootstrap';
+import { Container, Form, Button, FormGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/message';
 import Loader from '../components/loader';
@@ -49,7 +49,7 @@ const UserEditScreen = ({ match, history }) => {
   };
 
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <Link to='/admin/userList' className='btn btn-light my-3'>
         Go Back
       </Link>
@@ -103,7 +103,7 @@ const UserEditScreen = ({ match, history }) => {
           </Form>
         )}
       </FormContainer>
-    </>
+    </Container>
   );
 };
 

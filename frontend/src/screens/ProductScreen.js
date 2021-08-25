@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  Container,
   Row,
   Col,
   Image,
@@ -63,7 +64,7 @@ const ProductScreen = ({ history, match }) => {
     );
   };
   return (
-    <>
+    <Container style={{ padding: '1.2rem' }}>
       <Link className='btn btn-outline-primary my-3' to='/'>
         Go back
       </Link>
@@ -223,7 +224,7 @@ const ProductScreen = ({ history, match }) => {
           </Row>
         </>
       )}
-    </>
+    </Container>
   );
 };
 
