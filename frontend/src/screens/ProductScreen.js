@@ -98,11 +98,63 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroupItem>
 
                 <ListGroupItem className='my-2'>
-                  Description: {product.description}
+                  <h5 className='mb-3'>Description: </h5>
+                  {product.description}
                 </ListGroupItem>
 
                 <ListGroupItem>
-                  <strong>Beneficial for</strong> {product.concern}
+                  <h5 className='mb-3'>Beneficial for: </h5> {product.category}
+                </ListGroupItem>
+
+                <ListGroupItem>
+                  <h5 className='mt-2 mb-3'>This product is</h5>
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; Fragrance Free
+                  </p>
+
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; Silicone Free
+                  </p>
+
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; Brightens Complexion
+                  </p>
+
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; Paraben Free
+                  </p>
+
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; Reduces Dark Spots
+                  </p>
+
+                  <p>
+                    <i
+                      className='far fa-check-square'
+                      style={{ fontSize: '1.5rem' }}
+                    ></i>
+                    &nbsp; pH: 3.9 - 4.9
+                  </p>
                 </ListGroupItem>
               </ListGroup>
             </Col>

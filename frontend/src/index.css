@@ -65,9 +65,16 @@ a:hover {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+.explore{
+padding-top: 2rem;
+}
+.explore h3{
+  color: white;
+  padding-bottom: 1rem;
+}
 .explore img{
-  position: relative;
   max-width: 100%;
+  margin-left: 1rem;
   height: auto;
 }
 .srch{
@@ -78,25 +85,20 @@ a:hover {
   background-color: black;
   margin-right: 5px;
 }
-.srchBtn{
-  color: white;
-}
 .srchImg{
   width: 30px;
   height: 40px;
   margin-right: 10px;
 }
-body::after{
-  position: fixed !important;
-		opacity: 0 !important;
-		transition: all .35s ease !important;
-		visibility: hidden !important;
-		background: rgba(2,2,2,.75) !important;
+.foot{
+  background-color: black;
 }
-body.search-open{
-  transform: translateY(5em);
+.foot .list-group-item{
+  background-color: black;
+                  color: white;
+
 }
-body.search-open::after{
-  opacity: 1 !important;
-	visibility: visible !important;
+.foot div{
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }

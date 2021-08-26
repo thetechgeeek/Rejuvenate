@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { productActions_list } from '../actions/productActions';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Image, Row, Col } from 'react-bootstrap';
 import Message from '../components/message';
 import Loader from '../components/loader';
 import Paginate from '../components/Paginate';
@@ -11,8 +11,6 @@ import Product from '../components/Product';
 //state levels- component(menu,forms) and global(products, users)
 
 const HomeScreen = ({ match }) => {
-  const keyword = match.params.keyword;
-
   const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch();
@@ -24,8 +22,8 @@ const HomeScreen = ({ match }) => {
 
   //dispatching 'list products' action using useEffect
   useEffect(() => {
-    dispatch(productActions_list(keyword, pageNumber));
-  }, [dispatch, match, keyword, pageNumber]);
+    dispatch(productActions_list('', pageNumber));
+  }, [dispatch, match, pageNumber]);
 
   return (
     <>
@@ -40,10 +38,11 @@ const HomeScreen = ({ match }) => {
       <Container className='helloImg' fluid>
         <Row>
           <Col>
-            <img
+            <Image
+              alt=''
               src='https://cdn.shopify.com/s/files/1/0410/9608/5665/files/minimalist-skin-1-min.png?v=1593807250'
               fluid
-            ></img>
+            ></Image>
           </Col>
         </Row>
       </Container>
@@ -53,7 +52,7 @@ const HomeScreen = ({ match }) => {
             <h4>
               <strong>Looking for clean & effective skincare products?</strong>
             </h4>
-            <p>
+            <p style={{ paddingTop: '1rem' }}>
               We have all been there. You look for a product that addresses your
               particular skin concern. But there's an ocean of products out
               there with numerous promises & claims but hardly any clear
@@ -68,7 +67,7 @@ const HomeScreen = ({ match }) => {
         style={{
           textAlign: 'center',
           marginTop: '4rem',
-          marginBottom: '1.5rem',
+          marginBottom: '1.8rem',
         }}
       >
         <span className='underlineCustom'>Shop our bestsellers</span>
@@ -80,7 +79,7 @@ const HomeScreen = ({ match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
-          <Container className='mb-3'>
+          <Container className='mb-5'>
             <Row className='justify-content-center'>
               {/*loop through all products and render Product component for each product, while
                     passing array element as a prop*/}
@@ -90,30 +89,58 @@ const HomeScreen = ({ match }) => {
                 </Col>
               ))}
             </Row>
-            <Paginate
-              pages={pages}
-              page={page}
-              keyword={keyword ? keyword : ''}
-            />
+            <Paginate pages={pages} page={page} />
           </Container>
           {/* explore */}
-          <Container className='explore' fluid>
-            <Row>
-              <Col>
-                <img
-                  src='https://cdn.shopify.com/s/files/1/0410/9608/5665/files/skin-regimen-grey-min.png?v=1593944034'
-                  alt=''
-                  fluid
-                ></img>
-              </Col>
-              <Col>
-                <h3>Looking for particular?</h3>
-                <p>
-                  Know which ingredient is best suited for your particular skin
-                  concern. No more guesses.
-                </p>
-              </Col>
-            </Row>
+          <Container fluid>
+            <Container className='text-center'>
+              <Row className='mb-2'>
+                <h2 style={{ marginTop: '8rem' }}>Real Stories</h2>
+              </Row>
+              <Row style={{ marginBottom: '11rem' }}>
+                <Col sm={6} md={4}>
+                  <i
+                    className='fas fa-quote-left'
+                    style={{ float: 'left' }}
+                  ></i>
+                  <p>
+                    &nbsp; I love this Vitamin C serum, I can see my skin
+                    becomes brighter after one to two days only which is
+                    remarkable.
+                  </p>
+                  <p>
+                    <strong> - John Doe </strong>
+                  </p>
+                </Col>
+                <Col sm={6} md={4}>
+                  <i
+                    className='fas fa-quote-left'
+                    style={{ float: 'left' }}
+                  ></i>
+                  <p>
+                    &nbsp; I have been struggling with oily, acne-prone skin.
+                    After applying the serum before bed, I wake up with fresh &
+                    even skin that hasn't gotten oily overnight!
+                  </p>
+                  <p>
+                    <strong> - Jane Fletcher</strong>
+                  </p>
+                </Col>
+                <Col sm={6} md={4}>
+                  <i
+                    className='fas fa-quote-left'
+                    style={{ float: 'left' }}
+                  ></i>
+                  <p>
+                    &nbsp; Its really working. I was having mild wrinkles around
+                    my eyes but it has been reduced after 4-5 applications.
+                  </p>
+                  <p>
+                    <strong> - Alex Mercer </strong>
+                  </p>
+                </Col>
+              </Row>
+            </Container>
           </Container>
         </>
       )}

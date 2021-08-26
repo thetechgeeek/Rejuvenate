@@ -109,7 +109,11 @@ const ProductListScreen = ({ match, history }) => {
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
-                  <td>{product.name}</td>
+                  <td>
+                    <LinkContainer to={`/product/${product._id}`}>
+                      <Button>{product.name}</Button>
+                    </LinkContainer>
+                  </td>
                   <td>₹{product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.brand}</td>
