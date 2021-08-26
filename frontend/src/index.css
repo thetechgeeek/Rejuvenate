@@ -1,6 +1,9 @@
 main {
   min-height: 80vh;
 }
+body{
+  width: 100%;
+}
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
