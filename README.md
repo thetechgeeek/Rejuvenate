@@ -13,7 +13,7 @@
     <a href="https://github.com/thetechgeeek/Rejuvenate"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://rejuvenate0.herokuapp.com/">View Live version</a>
+    <a href="https://rejuvenate0.herokuapp.com/">View Live version(Takes 10s to load)</a>
     ·
     <a href="https://github.com/thetechgeeek/Rejuvenate/issues">Report Bug</a>
     ·
