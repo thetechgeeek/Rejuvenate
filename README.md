@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/thetechgeeek/Rejuvenate">
-    <img src="logo_rejuvate.jpg" alt="Logo" width="80" height="80">
+    <img src="logo_rejuvenate.jpg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Rejuvenate</h3>
@@ -162,4 +162,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: logo_rejuvate.jpg
+[product-screenshot]: main_rejuvenate.gif
