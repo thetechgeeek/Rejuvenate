@@ -15,7 +15,7 @@
     <br />
     <a href="https://rejuvenate0.herokuapp.com/">View Live version</a>
     ·
-    <a href="https://github.com/thetechgeeek/Rejuvenate">Report Bug</a>
+    <a href="https://github.com/thetechgeeek/Rejuvenate/issues">Report Bug</a>
     ·
     <a href="https://github.com/thetechgeeek/Rejuvenate/issues">Request Feature</a>
   </p>
@@ -156,7 +156,7 @@ jane@example.com (Customer)
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
